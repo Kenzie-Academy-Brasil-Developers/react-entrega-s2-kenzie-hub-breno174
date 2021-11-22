@@ -40,6 +40,7 @@ function Cadastro({ user, setUser }) {
             </h1>
             <Input label="Nome" placeholder="Seu nome" />
             <Input label="Email" placeholder="Seu melhor email" />
+            <Input label="biografia" placeholder="BIO" />
             <Input
               label="Senha"
               placeholder="Uma senha bem segura"
