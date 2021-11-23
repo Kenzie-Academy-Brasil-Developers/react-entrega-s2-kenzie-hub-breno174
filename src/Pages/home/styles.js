@@ -12,7 +12,7 @@ export const Content = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
-  spam {
+  span {
     color: white;
     background-color: #03045e;
     padding: 2px 3px;

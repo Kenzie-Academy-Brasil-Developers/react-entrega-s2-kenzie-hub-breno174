@@ -21,7 +21,7 @@ export const Content = styled.div`
   width: 100%;
   max-width: 700px;
 
-  spam {
+  span {
     color: white;
     background-color: #03045e;
     padding: 2px 3px;

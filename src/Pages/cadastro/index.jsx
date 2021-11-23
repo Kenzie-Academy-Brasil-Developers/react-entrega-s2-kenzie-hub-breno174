@@ -36,7 +36,7 @@ function Cadastro({ user, setUser }) {
         <AnimationContainer>
           <form onSubmit={handleSubmit(submitFunction)}>
             <h1>
-              Kenzie <spam>Hub</spam>
+              Kenzie <span>Hub</span>
             </h1>
             <Input label="Nome" placeholder="Seu nome" />
             <Input label="Email" placeholder="Seu melhor email" />

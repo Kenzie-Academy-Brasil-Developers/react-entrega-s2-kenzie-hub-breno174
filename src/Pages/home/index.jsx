@@ -12,7 +12,7 @@ function Login({ dados }) {
         <AnimationContainer>
           <form>
             <h1>
-              Kenzie <spam>Hub</spam>
+              Kenzie <span>Hub</span>
             </h1>
             <Input label="Nome" placeholder="Seu nome" />
             <Input
