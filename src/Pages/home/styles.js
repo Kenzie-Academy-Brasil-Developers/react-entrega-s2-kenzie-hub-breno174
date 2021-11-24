@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const Container = styled.div`
   height: 100vh;
@@ -21,11 +21,24 @@ export const Content = styled.div`
   }
 `;
 
+const appearFromRight = keyframes`
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+`;
+
 export const AnimationContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  animation: ${appearFromRight} 1s;
 
   form {
     margin: 70px 0;

@@ -4,6 +4,7 @@ export const Container = styled.div`
   height: 100vh;
   display: flex;
   align-items: stretch;
+  justify-content: center;
 `;
 
 export const Background = styled.div`
@@ -47,7 +48,13 @@ export const AnimationContainer = styled.div`
   align-items: center;
   justify-content: center;
   animation: ${appearFromRight} 1s;
-
+  #box {
+    border: solid 1px #ced4da;
+    box-sizing: border-box;
+    padding: 20px;
+    border-radius: 5px;
+    /* box-shadow: teal; */
+  }
   form {
     margin: 80px 0;
     width: 340px;

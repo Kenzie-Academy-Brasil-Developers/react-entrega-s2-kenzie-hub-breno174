@@ -29,12 +29,12 @@ function Login({ setUser }) {
   // );
   function login(data) {
     console.log(data);
-    // api
-    //   .post("/sessions", data)
-    //   .then((response) => console.log(response))
-    //   .catch((err) => console.error("ops! deu errado" + err));
-    //condiçao de verificaçaoi IF(data)
-    //history.push();
+    api
+      .post("/sessions", data)
+      .then((response) => console.log(response.data.user))
+      .catch((err) => console.error("ops! deu errado" + err));
+    // condiçao de verificaçaoi IF(data)
+    history.push("/usuario");
   }
 
   //onSubmit={handleSubmit(Verify)}
@@ -50,16 +50,20 @@ function Login({ setUser }) {
               <Input
                 label="Login"
                 placeholder="Login"
-                {...register("email")}
+                register={register}
+                name="email"
+                // {...register("email")}
                 required
               />
-              <span>{errors.email?.messege}</span>
+              {/* <span>{errors.email?.messege}</span> */}
               <Input
                 required
+                register={register}
                 label="Senha"
                 placeholder="Sua senha"
+                name="password"
                 type="password"
-                {...register("password")}
+                // {...register("password")}
               />
               {/* <span>{errors.senha?.messege}</span> */}
               <Button type="submit">Logar</Button>
