@@ -1,20 +1,29 @@
 import Card from "../Card";
 import "./styles.css";
 
-function Tech({ dados }) {
+function Work({ dados }) {
+  function haveWork(param) {
+    if (param === undefined) {
+      return "sem titulo";
+    } else {
+      return "tem work";
+    }
+  }
+
   return (
     <div id="works">
       <h2>Meus trabalhos</h2>
-      {dados.woks.map((element) => (
+      {dados.map((element) => (
         <Card
+          key={element.id}
           className="works-cards"
-          titulo={element.tech}
-          descrição={element.categori}
-          icone={element.icon}
+          titulo={haveWork(element.work)}
+          //descrição={element.categori}
+          //icone={element.icon}
         />
       ))}
     </div>
   );
 }
 
-export default Tech;
+export default Work;

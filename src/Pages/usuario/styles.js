@@ -9,7 +9,7 @@ export const Container = styled.div`
 
 export const Content = styled.section`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-between;
   width: 100%;
   Link {

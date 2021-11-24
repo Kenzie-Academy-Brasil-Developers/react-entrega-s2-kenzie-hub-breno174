@@ -4,11 +4,12 @@ import { useHistory, Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import api from "../../services/api";
 import { Container, Background, Content, AnimationContainer } from "./styles";
-import { FiUser, FiMail, FiLock } from "react-icons/fi";
+//import { FiUser, FiMail, FiLock } from "react-icons/fi";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
 
-function Cadastro({ user, setUser }) {
+function Cadastro({ dados }) {
+  //console.log(dados);
   const history = useHistory();
 
   const formSchema = yup.object().shape({
@@ -24,6 +25,7 @@ function Cadastro({ user, setUser }) {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(formSchema),

@@ -1,9 +1,11 @@
-function Card({ dados }) {
+import "./styles.css";
+
+function Card({ className, titulo, descrição, icone }) {
   return (
-    <div>
-      <img />
-      <h4>titulo</h4>
-      <p>Descrição</p>
+    <div className={className}>
+      <img alt="nada" />
+      <h4>{titulo}</h4>
+      <p>{descrição}</p>
     </div>
   );
 }

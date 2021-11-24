@@ -1,0 +1,12 @@
+.tech-cards {
+  border: solid 2px black;
+  margin: 2px;
+}
+.works-cards {
+  border: solid 2px blue;
+  margin: 2px;
+}
+.user-cards {
+  border: solid 2px red;
+  margin: 2px;
+}

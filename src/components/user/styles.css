@@ -1,0 +1,11 @@
+#user {
+}
+#card-usuario-contatos {
+  height: 50px;
+  color: white;
+  font-weight: bold;
+  background-color: blueviolet;
+}
+#card-usuario {
+  background-color: rgba(49, 182, 187, 0.767);
+}
