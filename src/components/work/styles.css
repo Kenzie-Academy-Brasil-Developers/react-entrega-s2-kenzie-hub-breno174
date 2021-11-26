@@ -6,6 +6,14 @@
   min-height: 50px;
 }
 
+#addWork {
+  background-color: #11995e;
+  border-radius: 5px;
+  padding: 4px;
+  height: 30px;
+  /* font-size: 10px; */
+}
+
 #works-title {
   display: flex;
   justify-content: space-between;

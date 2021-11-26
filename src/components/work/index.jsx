@@ -17,7 +17,7 @@ function Work({ dados }) {
     <div id="works">
       <div id="works-title">
         <h2>Meus trabalhos</h2>
-        <button>+</button>
+        <button id="addWork">+</button>
       </div>
       {jobs.map((element) => (
         <Card

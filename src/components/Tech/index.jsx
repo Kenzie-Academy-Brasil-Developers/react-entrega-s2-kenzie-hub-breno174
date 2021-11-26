@@ -2,16 +2,39 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
+import TextField from "@mui/material/TextField";
 // componetes
 import Card from "../Card";
 import { useState } from "react";
+import api from "../../services/api";
 // style
 import "./styles.css";
 
-function Tech({ dados }) {
+function Tech({ dados, token }) {
   const tecnologias = dados.techs;
   console.log(tecnologias, "dados recebidos da tech");
   //console.log(BasicModal, "basic modal");
+
+  const objeto = {
+    title: "html",
+    status: "iniciante", //query, auth
+  };
+
+  const addTech = (data) => {
+    console.log(data, "formulario de cadastro de novas Techs");
+    api
+      .post("/users/techs", data, {
+        headers: { Authorization: `Bearer  ${token}` },
+      })
+      .then((response) => {
+        console.log(response.data, "api post cadastro da tech deu certo");
+      })
+      .catch((err) => {
+        console.error("ops! deu errado cadastro de Techs" + err);
+      });
+  };
+
+  //addTech(objeto)
 
   const style = {
     position: "absolute",
@@ -72,6 +95,16 @@ function Tech({ dados }) {
               <Typography id="modal-modal-title" variant="h6" component="h2">
                 Nova tecnologia
               </Typography>
+              <TextField
+                helperText="Digite uma tecnologia"
+                id="demo-helper-text-aligned"
+                label="Titulo"
+              />
+              <select>
+                <option>valor 1</option>
+                <option>valor 2</option>
+                <option>valor 3</option>
+              </select>
               <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                 formulario de cadastro
               </Typography>

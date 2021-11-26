@@ -13,10 +13,10 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { Container, Content, Head } from "./styles";
 
 function Usuario({ dados }) {
-  //const userOne = dados[0];
   const pessoa = dados.user;
   console.log(dados, "dados usuario");
-  //console.log(userOne, "dados: o 1 dos usuario");
+  const meuToken = dados.token;
+  console.log(meuToken);
 
   //Para cadastro de tecnologias:
   /**
@@ -50,7 +50,7 @@ function Usuario({ dados }) {
         <Grid container display="flex" width="90%">
           <Content direction={SimpleMediaQuery().direction}>
             <Grid item xs={SimpleMediaQuery().size}>
-              <Tech dados={pessoa} />
+              <Tech dados={pessoa} token={meuToken} />
             </Grid>
             <Grid item xs={SimpleMediaQuery().size}>
               <Work dados={pessoa} />
@@ -67,9 +67,3 @@ function Usuario({ dados }) {
 }
 
 export default Usuario;
-
-/**
-          <Tech />
-          <User />
-          <Work />
- */
