@@ -6,6 +6,9 @@ import TextField from "@mui/material/TextField";
 // componetes
 import Card from "../Card";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 import api from "../../services/api";
 // style
 import "./styles.css";
@@ -13,19 +16,25 @@ import "./styles.css";
 function Tech({ dados, token }) {
   const tecnologias = dados.techs;
   console.log(tecnologias, "dados recebidos da tech");
+  const [tec, setTech] = useState();
   //console.log(BasicModal, "basic modal");
-
-  const objeto = {
-    title: "html",
-    status: "iniciante", //query, auth
-  };
 
   const addTech = (data) => {
     console.log(data, "formulario de cadastro de novas Techs");
+    console.log(token);
     api
-      .post("/users/techs", data, {
-        headers: { Authorization: `Bearer  ${token}` },
-      })
+      .post(
+        "/users/techs",
+        {
+          title: data.title,
+          status: data.status,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
       .then((response) => {
         console.log(response.data, "api post cadastro da tech deu certo");
       })
@@ -34,8 +43,21 @@ function Tech({ dados, token }) {
       });
   };
 
-  //addTech(objeto)
+  //montagem do objeto form
+  const formSchema = yup.object().shape({
+    title: yup.string().required("Campo obrigatorio"),
+    status: yup.string().required("Campo obrigatorio"),
+  });
 
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(formSchema),
+  });
+
+  //style Model
   const style = {
     position: "absolute",
     top: "50%",
@@ -84,33 +106,66 @@ function Tech({ dados, token }) {
         />
       ))}
       {modal && (
-        <div>
-          <Modal
-            open={modal}
-            onClose={() => setModal(false)}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description"
-          >
-            <Box sx={style}>
-              <Typography id="modal-modal-title" variant="h6" component="h2">
-                Nova tecnologia
-              </Typography>
+        <Modal
+          open={modal}
+          onClose={() => setModal(false)}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box sx={style}>
+            <Typography id="modal-modal-title" variant="h6" component="h2">
+              Nova tecnologia
+            </Typography>
+
+            <form onSubmit={handleSubmit(addTech)}>
               <TextField
+                {...register("title")}
                 helperText="Digite uma tecnologia"
                 id="demo-helper-text-aligned"
                 label="Titulo"
               />
-              <select>
-                <option>valor 1</option>
-                <option>valor 2</option>
-                <option>valor 3</option>
-              </select>
-              <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                formulario de cadastro
-              </Typography>
-            </Box>
-          </Modal>
-        </div>
+              <div>
+                <input
+                  {...register("status")}
+                  className="radio"
+                  id="iniciante"
+                  type="radio"
+                  value="iniciante"
+                  name="status"
+                />
+                <label className="label" htmlFor="iniciante">
+                  iniciante
+                </label>
+                <input
+                  {...register("status")}
+                  className="radio"
+                  id="intermediario"
+                  type="radio"
+                  value="intermediario"
+                  name="status"
+                />
+                <label className="label" for="intermediario">
+                  intermediario
+                </label>
+                <input
+                  {...register("status")}
+                  className="radio"
+                  id="avançado"
+                  type="radio"
+                  value="avançado"
+                  name="status"
+                />
+                <label className="label" for="avançado">
+                  avançado
+                </label>
+              </div>
+              <button type="submit">Enviar</button>
+            </form>
+            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+              formulario de cadastro
+            </Typography>
+          </Box>
+        </Modal>
       )}
     </div>
   );

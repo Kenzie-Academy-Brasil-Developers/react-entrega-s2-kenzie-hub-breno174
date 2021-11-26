@@ -18,3 +18,30 @@
   justify-content: space-between;
   margin: 8px 0px;
 }
+
+.radio {
+  display: none;
+}
+.label {
+  margin: 2px 5px;
+  padding: 6px;
+  background-color: rgba(78, 71, 255, 0.1);
+  color: black;
+}
+
+.label:hover {
+  background-color: brown;
+}
+
+.label::selection {
+  border: 2px solid green;
+}
+
+/* .radio {
+  display: none;
+  input:checked {
+    input + label {
+      border: 2px solid green;
+    }
+  }
+} */

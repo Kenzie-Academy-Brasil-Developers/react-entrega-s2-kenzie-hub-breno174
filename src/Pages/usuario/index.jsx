@@ -38,6 +38,7 @@ function Usuario({ dados }) {
     }
     return media;
   }
+  
   return (
     <>
       <Container>
