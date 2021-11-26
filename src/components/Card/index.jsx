@@ -1,6 +1,7 @@
 import "./styles.css";
 
 function Card({ className, titulo, descrição, icone }) {
+  //console.log(titulo, "titulo do card");
   return (
     <div className={className}>
       <img alt="nada" />

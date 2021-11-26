@@ -1,25 +1,33 @@
 import Card from "../Card";
 import "./styles.css";
+//import user_placeholder from "../../assets/images";
 
 function User({ dados }) {
-  const one = dados[0];
+  const one = dados;
+  //console.log(one, "dados do card usuario");
   return (
     <div id="user">
-      <h2>Usuario {one.name}</h2>
+      {/* <h2>Usuario {one.name}</h2> */}
       <div id="card-usuario">
         <div id="card-usuario-contatos">
           <figure>
-            <img id="picture" alt={one.name} width="50px" height="50px" />
+            <img
+              id="picture"
+              alt={"one.name"}
+              // src={user_placeholder}
+              // width="50px"
+              // height="50px"
+            />
           </figure>
-          <h4>{one.nome}</h4>
-          <p>{one.descrição}</p>
+          <h4>{"one.nome"}</h4>
+          <p>{"one.descrição"}</p>
         </div>
-        <Card
+        {/* <Card
           className="user-cards"
           titulo={one.course_module}
           descrição={one.bio}
           //icone={one.icon}
-        />
+        /> */}
       </div>
     </div>
   );

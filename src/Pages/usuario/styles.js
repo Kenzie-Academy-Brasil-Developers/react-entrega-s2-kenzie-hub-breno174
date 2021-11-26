@@ -1,15 +1,18 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 300px;
+  background-color: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  //width: 300px;
   height: 100vh;
   display: flex;
-  align-items: stretch;
+  align-items: center;
 `;
 
 export const Content = styled.section`
   display: flex;
-  flex-direction: row;
+  flex-direction: ${(props) => props.direction};
   justify-content: space-between;
   width: 100%;
   Link {
@@ -18,11 +21,23 @@ export const Content = styled.section`
 `;
 
 export const Head = styled.div`
-  width: 100%;
+  background-color: #fff;
+  box-sizing: border-box;
+  width: 90%;
   height: 80px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+  padding: 0px 14px;
+  margin: 20px 0px 10px;
+  box-shadow: -5px 12px 28px 2px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  #div-test {
+    width: 50px;
+    height: 50px;
+    background-color: red;
+  }
 
   span {
     color: white;

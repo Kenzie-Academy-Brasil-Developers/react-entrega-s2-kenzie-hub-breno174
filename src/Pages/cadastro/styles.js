@@ -56,7 +56,7 @@ export const AnimationContainer = styled.div`
     /* box-shadow: teal; */
   }
   form {
-    margin: 80px 0;
+    margin: 20px 0;
     width: 340px;
     text-align: center;
   }
@@ -74,3 +74,15 @@ export const AnimationContainer = styled.div`
     }
   }
 `;
+
+export const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 400,
+  bgcolor: "background.paper",
+  border: "2px solid #000",
+  boxShadow: 24,
+  p: 4,
+};

@@ -29,6 +29,7 @@ export default createGlobalStyle`
     h1, h2, h3, h4, h5, h6 {
         font-family: "Roboto Mono", monospace;
         font-weight: 700;
+        margin: 0px;
     }
 
     button {

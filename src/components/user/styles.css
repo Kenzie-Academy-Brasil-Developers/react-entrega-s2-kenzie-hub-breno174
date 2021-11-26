@@ -1,4 +1,8 @@
 #user {
+  background-color: #fff;
+  border-radius: 10px;
+  min-height: 50px;
+  padding: 10px 8px;
 }
 #card-usuario-contatos {
   height: 50px;
@@ -8,4 +12,10 @@
 }
 #card-usuario {
   background-color: rgba(49, 182, 187, 0.767);
+}
+
+#picture {
+  width: 50px;
+  height: 50px;
+  background-color: gray;
 }

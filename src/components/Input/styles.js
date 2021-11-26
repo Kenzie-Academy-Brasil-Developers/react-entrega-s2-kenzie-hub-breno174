@@ -9,8 +9,8 @@ export const InputContainer = styled.div`
   border-radius: 10px;
   border: 2px solid var(--gray);
   color: var(--gray);
-  padding: 1rem;
-  width: 100%;
+  padding: 0.5rem;
+  width: 90%;
   display: flex;
   transition: 0.4s;
 

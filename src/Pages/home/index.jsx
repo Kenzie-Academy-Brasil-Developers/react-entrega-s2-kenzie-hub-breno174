@@ -1,13 +1,16 @@
-import { Container, Content, AnimationContainer } from "./styles";
+// COMPONENTS
 import Button from "../../components/Button";
 import Input from "../../components/Input";
 //import { FiUser, FiLock } from "react-icons/fi";
+// HOOKS - yup, form, react, router
+import { yupResolver } from "@hookform/resolvers/yup";
 import { useHistory } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
 import api from "../../services/api";
+//Styles
+import { Container, Content, AnimationContainer } from "./styles";
 
 function Login({ setUser }) {
   const history = useHistory();
@@ -28,13 +31,19 @@ function Login({ setUser }) {
   //   api.post("/sessions", { email: "breno@kenzie.com.br", password: "123456" })
   // );
   function login(data) {
-    console.log(data);
+    //console.log(data);
     api
       .post("/sessions", data)
-      .then((response) => console.log(response.data.user))
+      .then((response) => {
+        //aqui ele já faz o send e a validação para troca de pagina
+        // passagem do token: response.data.token
+        //passagem do usuario: response.data.user
+        console.log(response, "api post home");
+        setUser(response.data);
+        history.push("/usuario");
+      })
       .catch((err) => console.error("ops! deu errado" + err));
     // condiçao de verificaçaoi IF(data)
-    history.push("/usuario");
   }
 
   //onSubmit={handleSubmit(Verify)}

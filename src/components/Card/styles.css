@@ -1,6 +1,8 @@
 .tech-cards {
   border: solid 2px black;
   margin: 2px;
+  width: 80%;
+  margin: auto;
 }
 .works-cards {
   border: solid 2px blue;

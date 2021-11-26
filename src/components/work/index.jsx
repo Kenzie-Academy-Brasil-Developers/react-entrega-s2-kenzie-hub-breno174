@@ -2,6 +2,9 @@ import Card from "../Card";
 import "./styles.css";
 
 function Work({ dados }) {
+  const jobs = dados.works;
+  //console.log(jobs, "dados recebidos do work");
+
   function haveWork(param) {
     if (param === undefined) {
       return "sem titulo";
@@ -12,12 +15,15 @@ function Work({ dados }) {
 
   return (
     <div id="works">
-      <h2>Meus trabalhos</h2>
-      {dados.map((element) => (
+      <div id="works-title">
+        <h2>Meus trabalhos</h2>
+        <button>+</button>
+      </div>
+      {jobs.map((element) => (
         <Card
           key={element.id}
           className="works-cards"
-          titulo={haveWork(element.work)}
+          titulo={haveWork(element)}
           //descrição={element.categori}
           //icone={element.icon}
         />

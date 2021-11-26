@@ -1,17 +1,41 @@
+// HOOKS - form, yup, react, router
 import * as yup from "yup";
+import { useState } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useHistory, Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+// Componetns
 import api from "../../services/api";
-import { Container, Background, Content, AnimationContainer } from "./styles";
-//import { FiUser, FiMail, FiLock } from "react-icons/fi";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
+//Material - UI
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Modal from "@mui/material/Modal";
+
+import {
+  Container,
+  Background,
+  Content,
+  AnimationContainer,
+  style,
+} from "./styles";
 
 function Cadastro({ dados }) {
   //console.log(dados);
   const history = useHistory();
+  /**
+   * @import do mui ToggleButtonGrop
+   *   - primeiro segundo terceito quarto*  => @modulos && texto embaixo
+   */
 
+  /**
+   * @URL => https://mui.com/pt/components/modal/
+   * é a caixa de alert para fazer cadastros!
+   * @returns modal;
+   */
+
+  //corpot do meu objeto PESSOA:
   const formSchema = yup.object().shape({
     name: yup.string().required("Campo obrigatorio"),
     email: yup.string().required("Campo obrigatorio").email("email invalido"),
@@ -22,15 +46,25 @@ function Cadastro({ dados }) {
     confsenha: yup.string().required("Campo obrigatorio"),
   });
 
+  const [modal, setModal] = useState(false);
+
+  //função de cadastro da PESSOA - METODO POST
   const submitFunction = (data) => {
-    // const pessoa = { email, senha };
-    console.log(data);
+    console.log(data, "formulario de cadastro");
+    //fazer um hot-post para quando o cadastro for efetuado
+    //fazer um hot-post para quando o usuario já for cadastrado
     api
       .post("/users", data)
-      .then((response) => console.log(response.data))
-      .catch((err) => console.error("ops! deu errado" + err));
+      .then((response) => {
+        console.log(response.data, "api post cadastro");
+        setModal(true);
+      })
+      .catch((err) => {
+        console.error("ops! deu errado" + err);
+        setModal(true);
+      });
   };
-
+  //useFORM:
   const {
     register,
     handleSubmit,
@@ -45,6 +79,7 @@ function Cadastro({ dados }) {
       {/* <Background /> */}
       <Content>
         <AnimationContainer>
+          {/** Formulario de cadastro */}
           <form onSubmit={handleSubmit(submitFunction)}>
             <h1>
               Kenzie <span>Hub</span>
@@ -105,6 +140,24 @@ function Cadastro({ dados }) {
               </p>
             </div>
           </form>
+          {modal && (
+            <Modal
+              open={modal}
+              onClose={() => setModal(false)}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description"
+            >
+              <Box sx={style}>
+                <Typography id="modal-modal-title" variant="h6" component="h2">
+                  Text in a modal
+                </Typography>
+                <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                  Duis mollis, est non commodo luctus, nisi erat porttitor
+                  ligula.
+                </Typography>
+              </Box>
+            </Modal>
+          )}
         </AnimationContainer>
       </Content>
     </Container>
@@ -112,17 +165,3 @@ function Cadastro({ dados }) {
 }
 
 export default Cadastro;
-
-/**
- * <>
-      <h2>MENU</h2>
-      <form onSubmit={handleSubmit(submitFunction)}>
-        <input {...register("email")} />
-        <input {...register("senha")} />
-      </form>
-      <button type="submit" onClick={history.push("/usuario")}>
-        enviar
-      </button>
-      <Link to="/cadastro">Não é cadastrado?</Link>
-    </>
- */
