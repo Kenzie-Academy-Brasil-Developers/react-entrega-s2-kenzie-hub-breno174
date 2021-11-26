@@ -66,3 +66,20 @@ export const AnimationContainer = styled.div`
     }
   }
 `;
+
+export const Botao = styled.button`
+  background: "#F5F5F5";
+  color: "#333333";
+  height: 45px;
+  border-radius: 8px;
+  border: 1px solid var(gray);
+  font-family: "Roboto Mono", monospace;
+  font-weight: bold;
+  margin-top: 16px;
+  opacity: 0.7;
+  :hover {
+    border: 2px solid var(--black);
+  }
+  width: 100%;
+  transition: 0.5s;
+`;

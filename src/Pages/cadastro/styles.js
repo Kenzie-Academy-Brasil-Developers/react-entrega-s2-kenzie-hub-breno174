@@ -48,6 +48,10 @@ export const AnimationContainer = styled.div`
   align-items: center;
   justify-content: center;
   animation: ${appearFromRight} 1s;
+  #verde {
+    background-color: green;
+  }
+
   #box {
     border: solid 1px #ced4da;
     box-sizing: border-box;

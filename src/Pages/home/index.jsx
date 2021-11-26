@@ -10,7 +10,7 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import api from "../../services/api";
 //Styles
-import { Container, Content, AnimationContainer } from "./styles";
+import { Container, Content, AnimationContainer, Botao } from "./styles";
 
 function Login({ setUser }) {
   const history = useHistory();
@@ -82,7 +82,9 @@ function Login({ setUser }) {
               </p>
             </div>
           </form>
-          <Button onClick={() => history.push("/cadastro")}>Cadastrar</Button>
+          <Botao type="button" onClick={() => history.push("/cadastro")}>
+            Cadastrar
+          </Botao>
         </AnimationContainer>
       </Content>
     </Container>

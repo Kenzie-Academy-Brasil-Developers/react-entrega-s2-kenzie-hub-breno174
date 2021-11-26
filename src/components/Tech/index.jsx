@@ -46,7 +46,9 @@ function Tech({ dados }) {
     <div id="tech">
       <div id="tech-title">
         <h2>Minhas Tecnologias</h2>
-        <button onClick={() => setModal(true)}>+</button>
+        <button id="addTech" onClick={() => setModal(true)}>
+          +
+        </button>
         {/**aqui chamei o meu MUI model */}
       </div>
       {tecnologias.map((element) => (

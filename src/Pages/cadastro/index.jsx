@@ -134,27 +134,30 @@ function Cadastro({ dados }) {
                 name="confsenha"
                 register={register}
               />
-              <Button type="submit">Enviar</Button>
+              <Button type="submit">Cadastrar</Button>
               <p>
                 Já tem uma conta? Faça seu <Link to="/">login</Link>
               </p>
             </div>
           </form>
-          {modal && (
+          {true && (
             <Modal
-              open={modal}
+              open={true}
               onClose={() => setModal(false)}
               aria-labelledby="modal-modal-title"
               aria-describedby="modal-modal-description"
             >
               <Box sx={style}>
-                <Typography id="modal-modal-title" variant="h6" component="h2">
-                  Text in a modal
+                <Typography id="modal-modal-title" variant="h4" component="h2">
+                  Yeesss!
                 </Typography>
                 <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                  Duis mollis, est non commodo luctus, nisi erat porttitor
-                  ligula.
+                  Tudo certinho, seu cadastrodeu bom demais. Agora basta fazer
+                  seu login e começar a sua jornada...
                 </Typography>
+                <Button whiteSchema onClick={() => history.push("/")}>
+                  Ir para login
+                </Button>
               </Box>
             </Modal>
           )}
