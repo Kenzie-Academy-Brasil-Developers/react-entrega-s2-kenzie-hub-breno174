@@ -1,17 +1,106 @@
+// Material - UI
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Modal from "@mui/material/Modal";
+import TextField from "@mui/material/TextField";
+// componetes
 import Card from "../Card";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import api from "../../services/api";
+//styles
 import "./styles.css";
 
-function Work({ dados }) {
+function Work({ dados, token }) {
   const jobs = dados.works;
-  //console.log(jobs, "dados recebidos do work");
+  console.log(jobs, "dados recebidos do work");
+  const [works, setWorks] = useState(jobs);
+  console.log(jobs, "state da tec");
 
+  const addWork = (data) => {
+    //vai mudar endpoint URL
+    api
+      .post(
+        "/users/works",
+        {
+          title: data.title,
+          description: data.description,
+          deploy_url: "https://kenziehub.me",
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response.data, "api post cadastro da work deu certo");
+        setWorks([...works, response.data]);
+        console.log(works, "nova work renderizada");
+        // tecnologias = [...tecnologias, response.data];
+        // console.log(tecnologias, "fez o spreed");
+      })
+      .catch((err) => {
+        console.error("ops! deu errado cadastro de Works" + err);
+      });
+  };
+
+  //montagem do objeto form
+  const formSchema = yup.object().shape({
+    title: yup.string().required("Campo obrigatorio"),
+    description: yup.string().required("Campo obrigatorio"),
+  });
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(formSchema),
+  });
+
+  //style Model
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 400,
+    bgcolor: "background.paper",
+    border: "2px solid #000",
+    boxShadow: 24,
+    p: 4,
+  };
+
+  //config model para aparecer ou não
+  const [modal, setModal] = useState(false);
+
+  //config titulo e descrições;
   function haveWork(param) {
     if (param === undefined) {
-      return "sem titulo";
+      return "sem projetos";
     } else {
       return "tem work";
     }
   }
+
+  //config titulo e descrições;
+  const haveTitle = (param) => {
+    if (param === undefined) {
+      return "sem titulo";
+    } else {
+      return param.title;
+    }
+  };
+  const havedescription = (param) => {
+    if (param === undefined) {
+      return "sem description";
+    } else {
+      return param.description;
+    }
+  };
 
   return (
     <div id="works">
@@ -23,11 +112,50 @@ function Work({ dados }) {
         <Card
           key={element.id}
           className="works-cards"
-          titulo={haveWork(element)}
-          //descrição={element.categori}
+          titulo={haveTitle(element)}
+          descrição={havedescription(element)}
           //icone={element.icon}
         />
       ))}
+      {/**BOX MODAL */}
+      {modal && (
+        <Modal
+          open={modal}
+          onClose={() => setModal(false)}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box sx={style}>
+            <Typography id="modal-modal-title" variant="h6" component="h2">
+              Cadastrar Trabalho
+            </Typography>
+
+            <form onSubmit={handleSubmit(addWork)}>
+              <TextField
+                {...register("title")}
+                helperText="Digite uma tecnologia"
+                id="demo-helper-text-aligned"
+                label="Novo trabalho"
+              />
+              <div>
+                <TextField
+                  {...register("description")}
+                  id="outlined-multiline-static"
+                  label="Descrição"
+                  multiline
+                  rows={4}
+                  defaultValue="BIO"
+                  helperText="Comece uma descrição"
+                />
+              </div>
+              <button type="submit">Enviar</button>
+            </form>
+            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+              formulario de cadastro
+            </Typography>
+          </Box>
+        </Modal>
+      )}
     </div>
   );
 }

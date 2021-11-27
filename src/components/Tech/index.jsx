@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import TextField from "@mui/material/TextField";
+//import ViewInArIcon from "@mui/icons-material/ViewInAr";
 // componetes
 import Card from "../Card";
 import { useState } from "react";
@@ -72,6 +73,7 @@ function Tech({ dados, token }) {
     p: 4,
   };
 
+  //config titulo e descrições;
   const haveTitle = (param) => {
     if (param === undefined) {
       return "sem titulo";
@@ -87,6 +89,7 @@ function Tech({ dados, token }) {
     }
   };
 
+  //config model para aparecer ou não
   const [modal, setModal] = useState(false);
 
   return (
@@ -104,9 +107,10 @@ function Tech({ dados, token }) {
           className="tech-cards"
           titulo={haveTitle(element)}
           descrição={haveStatus(element)}
-          // icone={element.icon}
+          //Icone={ViewInArIcon}
         />
       ))}
+      {/**BOX MODEL */}
       {modal && (
         <Modal
           open={modal}
@@ -116,7 +120,7 @@ function Tech({ dados, token }) {
         >
           <Box sx={style}>
             <Typography id="modal-modal-title" variant="h6" component="h2">
-              Nova tecnologia
+              Cadastrar Tecnologia
             </Typography>
 
             <form onSubmit={handleSubmit(addTech)}>
@@ -124,7 +128,7 @@ function Tech({ dados, token }) {
                 {...register("title")}
                 helperText="Digite uma tecnologia"
                 id="demo-helper-text-aligned"
-                label="Titulo"
+                label="Nova tecnologia"
               />
               <div>
                 <input

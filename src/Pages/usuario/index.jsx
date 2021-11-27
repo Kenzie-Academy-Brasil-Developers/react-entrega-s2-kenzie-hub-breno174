@@ -56,7 +56,7 @@ function Usuario({ dados }) {
               <Tech dados={pessoa} token={meuToken} />
             </Grid>
             <Grid item xs={SimpleMediaQuery().size}>
-              <Work dados={pessoa} />
+              <Work dados={pessoa} token={meuToken} />
             </Grid>
             <Grid item xs={SimpleMediaQuery().user}>
               <User dados={pessoa} />
