@@ -19,8 +19,8 @@ function User({ dados }) {
           </figure>
         </div>
         <div id="user-descricao">
-          <h4>{"one.nome"}</h4>
-          <p>{"one.descrição"}</p>
+          <h4>{one.name}</h4>
+          <p>{one.course_module}</p>
         </div>
       </div>
       <div id="dados-usuario">

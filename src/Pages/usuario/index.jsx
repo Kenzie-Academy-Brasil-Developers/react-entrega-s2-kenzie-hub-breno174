@@ -29,16 +29,18 @@ function Usuario({ dados }) {
     const matches = useMediaQuery("(min-width:600px)");
     let media = {
       direction: "row",
-      size: 3.8,
+      size: 4.2,
+      user: 3.2,
     };
 
     if (matches === false) {
       media.direction = "column";
       media.size = 12;
+      media.user = 12;
     }
     return media;
   }
-  
+
   return (
     <>
       <Container>
@@ -56,7 +58,7 @@ function Usuario({ dados }) {
             <Grid item xs={SimpleMediaQuery().size}>
               <Work dados={pessoa} />
             </Grid>
-            <Grid item xs={SimpleMediaQuery().size}>
+            <Grid item xs={SimpleMediaQuery().user}>
               <User dados={pessoa} />
             </Grid>
           </Content>
