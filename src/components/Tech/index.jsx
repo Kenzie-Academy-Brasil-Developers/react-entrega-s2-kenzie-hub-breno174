@@ -144,7 +144,7 @@ function Tech({ dados, token }) {
                   value="intermediario"
                   name="status"
                 />
-                <label className="label" for="intermediario">
+                <label className="label" htmlFor="intermediario">
                   intermediario
                 </label>
                 <input
@@ -155,7 +155,7 @@ function Tech({ dados, token }) {
                   value="avançado"
                   name="status"
                 />
-                <label className="label" for="avançado">
+                <label className="label" htmlFor="avançado">
                   avançado
                 </label>
               </div>

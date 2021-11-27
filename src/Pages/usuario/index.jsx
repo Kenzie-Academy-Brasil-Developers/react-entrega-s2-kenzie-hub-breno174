@@ -62,7 +62,6 @@ function Usuario({ dados }) {
               <User dados={pessoa} />
             </Grid>
           </Content>
-          <Link to="/">Voltar</Link>
         </Grid>
       </Container>
     </>

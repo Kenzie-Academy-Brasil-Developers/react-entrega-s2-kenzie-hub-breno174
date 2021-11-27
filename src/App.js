@@ -9,6 +9,7 @@ import GlobalStyle from "./styles/global";
 
 function App() {
   const [user, setUser] = useState([]);
+  console.log(user, "dados do App.js");
 
   return (
     <>
