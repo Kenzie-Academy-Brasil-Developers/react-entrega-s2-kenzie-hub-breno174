@@ -3,6 +3,8 @@
   border-radius: 10px;
   min-height: 50px;
   padding: 10px 8px;
+  overflow: auto;
+  max-height: 450px;
 }
 
 #addTech {

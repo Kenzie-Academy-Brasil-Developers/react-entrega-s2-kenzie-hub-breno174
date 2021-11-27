@@ -15,13 +15,11 @@ import "./styles.css";
 
 function Tech({ dados, token }) {
   const tecnologias = dados.techs;
-  //console.log(tecnologias, "dados recebidos da tech");
-  const [tec, setTech] = useState();
-  //console.log(BasicModal, "basic modal");
+  console.log(tecnologias, "dados recebidos da tech");
+  const [tec, setTech] = useState(tecnologias);
+  console.log(tec, "state da tec");
 
   const addTech = (data) => {
-    //console.log(data, "formulario de cadastro de novas Techs");
-    //console.log(token);
     api
       .post(
         "/users/techs",
@@ -36,7 +34,11 @@ function Tech({ dados, token }) {
         }
       )
       .then((response) => {
-        //console.log(response.data, "api post cadastro da tech deu certo");
+        console.log(response.data, "api post cadastro da tech deu certo");
+        setTech([...tec, response.data]);
+        console.log(tec, "nova tech renderizada");
+        // tecnologias = [...tecnologias, response.data];
+        // console.log(tecnologias, "fez o spreed");
       })
       .catch((err) => {
         console.error("ops! deu errado cadastro de Techs" + err);
@@ -96,7 +98,7 @@ function Tech({ dados, token }) {
         </button>
         {/**aqui chamei o meu MUI model */}
       </div>
-      {tecnologias.map((element) => (
+      {tec.map((element) => (
         <Card
           key={element.id}
           className="tech-cards"

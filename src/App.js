@@ -11,6 +11,10 @@ function App() {
   const [user, setUser] = useState([]);
   console.log(user, "dados do App.js");
 
+  useEffect(() => {
+    console.log("loop infinito\n Ocorreu por user ser atualizado direto");
+  }, [user]);
+
   return (
     <>
       <GlobalStyle />

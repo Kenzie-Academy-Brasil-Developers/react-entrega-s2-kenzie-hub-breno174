@@ -14,9 +14,9 @@ import { Container, Content, Head } from "./styles";
 
 function Usuario({ dados }) {
   const pessoa = dados.user;
-  console.log(dados, "dados usuario");
+  //console.log(dados, "dados usuario");
   const meuToken = dados.token;
-  console.log(meuToken);
+  //console.log(meuToken);
 
   //Para cadastro de tecnologias:
   /**

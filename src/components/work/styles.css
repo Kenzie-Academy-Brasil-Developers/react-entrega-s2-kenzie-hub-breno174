@@ -4,6 +4,8 @@
   background-color: #fff;
   border-radius: 10px;
   min-height: 50px;
+  overflow: auto;
+  max-height: 450px;
 }
 
 #addWork {

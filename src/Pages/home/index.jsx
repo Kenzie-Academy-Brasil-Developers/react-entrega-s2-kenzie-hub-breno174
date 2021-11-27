@@ -31,14 +31,13 @@ function Login({ setUser }) {
   //   api.post("/sessions", { email: "breno@kenzie.com.br", password: "123456" })
   // );
   function login(data) {
-    //console.log(data);
     api
       .post("/sessions", data)
       .then((response) => {
         //aqui ele já faz o send e a validação para troca de pagina
         // passagem do token: response.data.token
         //passagem do usuario: response.data.user
-        console.log(response, "api post home");
+        //console.log(response, "api post home");
         setUser(response.data);
         history.push("/usuario");
       })
