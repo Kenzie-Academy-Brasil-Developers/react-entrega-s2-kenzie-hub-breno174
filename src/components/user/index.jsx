@@ -1,34 +1,45 @@
 import Card from "../Card";
 import "./styles.css";
-//import user_placeholder from "../../assets/images";
+import user_placeholder from "../../assets/images/imagem.png";
+import { useHistory } from "react-router-dom";
 
 function User({ dados }) {
   const one = dados;
-  //console.log(one, "dados do card usuario");
+  console.log(one, "dados do card usuario");
+
+  const history = useHistory();
+
   return (
     <div id="user">
       {/* <h2>Usuario {one.name}</h2> */}
       <div id="card-usuario">
-        <div id="card-usuario-contatos">
+        <div id="card-usuario-foto">
           <figure>
-            <img
-              id="picture"
-              alt={"one.name"}
-              // src={user_placeholder}
-              // width="50px"
-              // height="50px"
-            />
+            <img id="picture" alt={"one.name"} src={user_placeholder} />
           </figure>
+        </div>
+        <div id="user-descricao">
           <h4>{"one.nome"}</h4>
           <p>{"one.descrição"}</p>
         </div>
-        {/* <Card
-          className="user-cards"
-          titulo={one.course_module}
-          descrição={one.bio}
-          //icone={one.icon}
-        /> */}
       </div>
+      <div id="dados-usuario">
+        <Card
+          className="user-cards-contact"
+          titulo={"Ligar agora"}
+          descrição={one.contact}
+          //icone={one.icon}
+        />
+        <Card
+          className="user-cards-contact"
+          titulo={"Enviar um email"}
+          descrição={one.email}
+          //icone={one.icon}
+        />
+      </div>
+      <button id="sair" onClick={() => history.push("/")}>
+        Sair
+      </button>
     </div>
   );
 }

@@ -61,7 +61,7 @@ function Cadastro({ dados }) {
       })
       .catch((err) => {
         console.error("ops! deu errado" + err);
-        setModal(true);
+        // setModal(true);
       });
   };
   //useFORM:
@@ -140,9 +140,9 @@ function Cadastro({ dados }) {
               </p>
             </div>
           </form>
-          {true && (
+          {modal && (
             <Modal
-              open={true}
+              open={modal}
               onClose={() => setModal(false)}
               aria-labelledby="modal-modal-title"
               aria-describedby="modal-modal-description"

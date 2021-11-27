@@ -4,18 +4,59 @@
   min-height: 50px;
   padding: 10px 8px;
 }
-#card-usuario-contatos {
+#card-usuario-foto {
   height: 50px;
-  color: white;
+  color: black;
   font-weight: bold;
   background-color: blueviolet;
+  border-radius: 10px;
 }
 #card-usuario {
+  display: flex;
+  flex-direction: row;
   background-color: rgba(49, 182, 187, 0.767);
+  padding: 15px 3px;
 }
 
 #picture {
   width: 50px;
   height: 50px;
   background-color: gray;
+  border-radius: 50%;
+}
+
+#user-descricao {
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+  justify-content: center;
+}
+
+#dados-usuario {
+  background-color: white;
+  width: 100%;
+  padding: 10px;
+}
+
+#sair {
+  background: "#F5F5F5";
+  color: "#333333";
+  height: 55px;
+  border-radius: 8px;
+  border: 1px solid var(gray);
+  font-family: "Roboto Mono", monospace;
+  font-weight: bold;
+  margin: 16px 10% 0px;
+  opacity: 0.7;
+  width: 80%;
+  transition: 0.5s;
+}
+
+#sair:hover {
+  border: 2px solid var(--black);
+}
+
+.user-cards-contact {
+  background-color: #f5f5f5;
+  border: 5px solid white;
 }
