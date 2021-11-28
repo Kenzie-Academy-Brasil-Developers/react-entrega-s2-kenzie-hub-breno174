@@ -6,7 +6,7 @@ function Input({ label, register, name, ...rest }) {
       <div>{label}</div>
       <InputContainer>
         {/* {Icon && <Icon />} */}
-        <input {...register(name)} {...rest} />
+        <input {...register(name)} {...rest} helperText="um email" />
       </InputContainer>
     </Container>
   );

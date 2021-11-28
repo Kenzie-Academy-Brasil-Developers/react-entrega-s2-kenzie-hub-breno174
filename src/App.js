@@ -6,6 +6,7 @@ import Usuario from "./Pages/usuario";
 import Login from "./Pages/home";
 import api from "./services/api";
 import GlobalStyle from "./styles/global";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   const [user, setUser] = useState([]);
@@ -18,6 +19,7 @@ function App() {
   return (
     <>
       <GlobalStyle />
+      <Toaster position="top-center" reverseOrder={false} />
       <Switch>
         <Route exact path="/">
           <Login setUser={setUser} />

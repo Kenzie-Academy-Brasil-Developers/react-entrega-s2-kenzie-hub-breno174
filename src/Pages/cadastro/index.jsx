@@ -4,10 +4,11 @@ import { useState } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useHistory, Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-// Componetns
+// Componets
 import api from "../../services/api";
 import Button from "../../components/Button";
 import Input from "../../components/Input";
+import { toast } from "react-hot-toast";
 //Material - UI
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -42,8 +43,15 @@ function Cadastro({ dados }) {
     bio: yup.string().required("Campo obrigatorio"),
     contact: yup.string().required("Campo obrigatorio"),
     course_module: yup.string().required("Campo obrigatorio"), //vai ser outra coisa
-    password: yup.string().required("Campo obrigatorio"),
-    confsenha: yup.string().required("Campo obrigatorio"),
+    password: yup
+      .string()
+      .min(6, "minimo de 6 digitos")
+      .required("Campo obrigatorio"),
+    confsenha: yup
+      .string()
+      .min(6, "minimo de 6 digitos")
+      // .oneOf([yup.ref("password")], "senhas diferentes")
+      .required("Campo obrigatorio"),
   });
 
   const [modal, setModal] = useState(false);
@@ -61,6 +69,7 @@ function Cadastro({ dados }) {
       })
       .catch((err) => {
         console.error("ops! deu errado" + err);
+        toast.error("Campo não preenchido ou senhas diferentes");
         // setModal(true);
       });
   };
@@ -122,14 +131,14 @@ function Cadastro({ dados }) {
               {/**VOU CRIRA ESSE INPUT TEMPORARIO APENAS PARA TESTAR O GET CREATE */}
               <Input
                 label="senha"
-                placeholder="Senha"
+                placeholder="Senha com 6 digitos"
                 type="password"
                 name="password"
                 register={register}
               />
               <Input
                 label="Confirmação da senha"
-                placeholder="Confirmaçar senha"
+                placeholder="Confirmação de senha"
                 type="password"
                 name="confsenha"
                 register={register}

@@ -11,18 +11,20 @@ import * as yup from "yup";
 import api from "../../services/api";
 //Styles
 import { Container, Content, AnimationContainer, Botao } from "./styles";
+import { toast } from "react-hot-toast";
 
 function Login({ setUser }) {
   const history = useHistory();
 
   const formSchema = yup.object().shape({
-    email: yup.string().required("Campo obrigatorio").email("email invalido"),
+    email: yup.string().required("Campo obrigatorio"),
     password: yup.string().required("Campo obrigatorio"),
   });
 
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(formSchema),
@@ -39,9 +41,14 @@ function Login({ setUser }) {
         //passagem do usuario: response.data.user
         //console.log(response, "api post home");
         setUser(response.data);
+        // Usar um (reset) do react-hook-form para limpar meus campos do formulario
+        reset();
         history.push("/usuario");
       })
-      .catch((err) => console.error("ops! deu errado" + err));
+      .catch((err) => {
+        toast.error("Email ou senha inválidos");
+        console.error("ops! deu errado" + err);
+      });
     // condiçao de verificaçaoi IF(data)
   }
 
@@ -57,7 +64,7 @@ function Login({ setUser }) {
             <div id="box">
               <Input
                 label="Login"
-                placeholder="Login"
+                placeholder="E-mail"
                 register={register}
                 name="email"
                 // {...register("email")}
@@ -73,7 +80,6 @@ function Login({ setUser }) {
                 type="password"
                 // {...register("password")}
               />
-              {/* <span>{errors.senha?.messege}</span> */}
               <Button type="submit">Logar</Button>
               <p>
                 Criar uma Página para mostrar suas{" "}

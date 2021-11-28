@@ -20,7 +20,7 @@ export const InputContainer = styled.div`
     flex: 1;
     border: 0;
     font-size: 14px;
-    padding: 8px 4px;
+    padding: 4px 4px;
     color: var(--black);
     &::placeholder {
       color: var(--gray);
