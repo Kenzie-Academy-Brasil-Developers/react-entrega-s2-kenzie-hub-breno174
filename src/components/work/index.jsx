@@ -10,10 +10,11 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import api from "../../services/api";
+import ModelWork from "../Modals/Cadwork";
 //styles
 import "./styles.css";
 
-function Work({ dados, token }) {
+function Work({ dados, token, setUser }) {
   const jobs = dados.works;
   console.log(jobs, "dados recebidos do work");
   const [works, setWorks] = useState(jobs);
@@ -88,19 +89,34 @@ function Work({ dados, token }) {
     }
   };
 
-  //config model para aparecer ou não
-  const [modal, setModal] = useState(false);
+  //config model
+  const [modal, setModal] = useState(false); //cadastro
+  const [troca, setTroca] = useState(false);
+  const [novo, setNovo] = useState({});
+
+  function Change(param) {
+    console.log(param, "do work");
+    setNovo(param);
+    setTroca(true);
+  }
 
   return (
     <div id="works">
       <div id="works-title">
         <h2>Meus trabalhos</h2>
+        <ModelWork
+          objeto={novo}
+          troca={troca}
+          setTroca={setTroca}
+          token={token}
+        />
         <button id="addWork" onClick={() => setModal(true)}>
           +
         </button>
       </div>
       {works.map((element) => (
         <Card
+          click={() => Change(element)}
           key={element.id}
           className="works-cards"
           titulo={haveTitle(element)}
@@ -141,9 +157,6 @@ function Work({ dados, token }) {
               </div>
               <button type="submit">Enviar</button>
             </form>
-            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-              formulario de cadastro
-            </Typography>
           </Box>
         </Modal>
       )}

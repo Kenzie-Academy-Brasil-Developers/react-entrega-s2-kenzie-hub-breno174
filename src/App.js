@@ -10,11 +10,7 @@ import { Toaster } from "react-hot-toast";
 
 function App() {
   const [user, setUser] = useState([]);
-  console.log(user, "dados do App.js");
-
-  useEffect(() => {
-    console.log("loop infinito\n Ocorreu por user ser atualizado direto");
-  }, [user]);
+  console.log(user, "usuario");
 
   return (
     <>
@@ -26,7 +22,7 @@ function App() {
         </Route>
 
         <Route exact path="/usuario">
-          <Usuario dados={user} />
+          <Usuario dados={user} setUser={setUser} />
         </Route>
 
         <Route exact path="/cadastro">

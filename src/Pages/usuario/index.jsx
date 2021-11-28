@@ -1,6 +1,6 @@
 // HOOKS - react, router
 import * as React from "react";
-import { Children, useState } from "react";
+import { Children, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 // COMPONENTS
 import user_placeholder from "../../assets/images/imagem.png";
@@ -13,18 +13,12 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 //styles
 import { Container, Content, Head } from "./styles";
 
-function Usuario({ dados }) {
+function Usuario({ dados, setUser }) {
   const pessoa = dados.user;
-  //console.log(dados, "dados usuario");
   const meuToken = dados.token;
-  //console.log(meuToken);
-
-  //Para cadastro de tecnologias:
-  /**
-   * @URL => https://mui.com/pt/components/modal/
-   * é a caixa de alert para fazer cadastros!
-   * @returns modal;
-   */
+  useEffect(() => {
+    console.log("algo");
+  }, [pessoa]);
 
   function SimpleMediaQuery() {
     const matches = useMediaQuery("(min-width:600px)");
@@ -58,10 +52,10 @@ function Usuario({ dados }) {
         <Grid container display="flex" width="90%">
           <Content direction={SimpleMediaQuery().direction}>
             <Grid item xs={SimpleMediaQuery().size}>
-              <Tech dados={pessoa} token={meuToken} />
+              <Tech dados={pessoa} token={meuToken} setUser={setUser} />
             </Grid>
             <Grid item xs={SimpleMediaQuery().size}>
-              <Work dados={pessoa} token={meuToken} />
+              <Work dados={pessoa} token={meuToken} setUser={setUser} />
             </Grid>
             <Grid item xs={SimpleMediaQuery().user}>
               <User dados={pessoa} />

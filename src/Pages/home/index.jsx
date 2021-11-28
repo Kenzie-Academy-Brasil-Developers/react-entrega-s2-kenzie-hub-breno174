@@ -37,9 +37,6 @@ function Login({ setUser }) {
   } = useForm({
     resolver: yupResolver(formSchema),
   });
-  // console.log(
-  //   api.post("/sessions", { email: "breno@kenzie.com.br", password: "123456" })
-  // );
   function login(data) {
     api
       .post("/sessions", data)
@@ -85,15 +82,6 @@ function Login({ setUser }) {
                 helperText={errors.password ? "senha invalida" : "  "}
                 {...register("password")}
               />
-              {/* <Input
-                required
-                register={register}
-                label="Senha"
-                placeholder="Sua senha"
-                name="password"
-                type="password"
-                // {...register("password")}
-              /> */}
               <Button type="submit">Logar</Button>
               <p>
                 Criar uma Página para mostrar suas{" "}

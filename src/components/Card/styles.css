@@ -8,8 +8,11 @@
   border-right: 4px solid green;
 }
 .works-cards {
-  border: solid 2px blue;
+  border: solid 2px white;
   margin: 2px;
+}
+.works-cards:hover {
+  border-right: 4px solid #403caa;
 }
 .user-cards {
   border: solid 2px red;
