@@ -11,7 +11,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import api from "../../../services/api";
 
-function ModelTech({ objeto, troca, setTroca, token }) {
+function ModelTech({ objeto, troca, setTroca, token, loadInfos }) {
   //formularios
   const formSchema = yup.object().shape({
     // title: yup.string().required("Campo obrigatorio"),
@@ -39,7 +39,6 @@ function ModelTech({ objeto, troca, setTroca, token }) {
   };
 
   function changeTech(data) {
-    console.log(data, "veio da change");
     api
       .put(
         `/users/techs/${objeto.id}`,
@@ -54,6 +53,7 @@ function ModelTech({ objeto, troca, setTroca, token }) {
       )
       .then((response) => {
         console.log(response.data, "api put alterar da tech deu certo");
+        loadInfos(true);
       })
       .catch((err) => {
         console.error("ops! deu errado ao tentar alterar a Tech" + err);
@@ -68,7 +68,8 @@ function ModelTech({ objeto, troca, setTroca, token }) {
         },
       })
       .then((response) => {
-        console.log(response.data, "api delete tech deu certo");
+        console.log("api delete tech deu certo");
+        loadInfos(true);
       })
       .catch((err) => {
         console.error("ops! deu errado ao tentar deletar a Tech" + err);

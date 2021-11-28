@@ -11,7 +11,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import api from "../../../services/api";
 
-function ModelWork({ objeto, troca, setTroca, token }) {
+function ModelWork({ objeto, troca, setTroca, token, loadInfos }) {
   //formularios
   const formSchema = yup.object().shape({
     // title: yup.string().required("Campo obrigatorio"),
@@ -38,11 +38,10 @@ function ModelWork({ objeto, troca, setTroca, token }) {
     p: 4,
   };
 
-  function changeTech(data) {
-    console.log(data, "veio da change");
+  function changeWork(data) {
     api
       .put(
-        `/users/techs/${objeto.id}`,
+        `/users/works/${objeto.id}`,
         {
           description: data.description,
         },
@@ -53,22 +52,24 @@ function ModelWork({ objeto, troca, setTroca, token }) {
         }
       )
       .then((response) => {
-        console.log(response.data, "api put alterar da tech deu certo");
+        console.log(response.data, "api put alterar da work deu certo");
+        loadInfos(true);
       })
       .catch((err) => {
-        console.error("ops! deu errado ao tentar alterar a Tech" + err);
+        console.error("ops! deu errado ao tentar alterar a work" + err);
       });
   }
 
   function delTipe(data) {
     api
-      .delete(`/users/techs/${data.id}`, {
+      .delete(`/users/works/${data.id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
       .then((response) => {
         console.log(response.data, "api delete work deu certo");
+        loadInfos(true);
       })
       .catch((err) => {
         console.error("ops! deu errado ao tentar deletar a work" + err);
@@ -87,7 +88,7 @@ function ModelWork({ objeto, troca, setTroca, token }) {
           Cadastrar Tecnologia
         </Typography>
 
-        <form onSubmit={handleSubmit(changeTech)}>
+        <form onSubmit={handleSubmit(changeWork)}>
           <TextField
             helperText="  "
             id="demo-helper-text-aligned"

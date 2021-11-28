@@ -15,7 +15,7 @@ import TextField from "@mui/material/TextField";
 import { Container, Content, AnimationContainer, Botao } from "./styles";
 import { toast } from "react-hot-toast";
 
-function Login({ setUser }) {
+function Login({ setUser, setDataLogin }) {
   const history = useHistory();
 
   const formSchema = yup.object().shape({
@@ -38,15 +38,12 @@ function Login({ setUser }) {
     resolver: yupResolver(formSchema),
   });
   function login(data) {
+    setDataLogin({ email: data.email, password: data.password });
+    console.log(data);
     api
       .post("/sessions", data)
       .then((response) => {
-        //aqui ele já faz o send e a validação para troca de pagina
-        // passagem do token: response.data.token
-        //passagem do usuario: response.data.user
-        //console.log(response, "api post home");
         setUser(response.data);
-        // Usar um (reset) do react-hook-form para limpar meus campos do formulario
         reset();
         history.push("/usuario");
       })
@@ -54,10 +51,8 @@ function Login({ setUser }) {
         toast.error("Email ou senha inválidos");
         console.error("ops! deu errado" + err);
       });
-    // condiçao de verificaçaoi IF(data)
   }
 
-  //onSubmit={handleSubmit(Verify)}
   return (
     <Container>
       <Content>

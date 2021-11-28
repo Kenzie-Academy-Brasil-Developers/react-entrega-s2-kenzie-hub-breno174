@@ -5,7 +5,6 @@ import { useHistory } from "react-router-dom";
 
 function User({ dados }) {
   const one = dados;
-  console.log(one, "dados do card usuario");
 
   const history = useHistory();
 

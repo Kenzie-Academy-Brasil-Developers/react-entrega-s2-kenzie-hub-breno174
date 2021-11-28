@@ -7,18 +7,31 @@ import user_placeholder from "../../assets/images/imagem.png";
 import Tech from "../../components/Tech";
 import Work from "../../components/work";
 import User from "../../components/user";
+import api from "../../services/api";
 //Material - ui
 import { Grid, TextField, Button } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
 //styles
 import { Container, Content, Head } from "./styles";
 
-function Usuario({ dados, setUser }) {
-  const pessoa = dados.user;
+function Usuario({ dados, setUser, dataLogin }) {
+  const [pessoa, setPessoa] = useState(dados.user);
   const meuToken = dados.token;
-  useEffect(() => {
-    console.log("algo");
-  }, [pessoa]);
+  const idUser = pessoa.id;
+
+  function loadInfos(param) {
+    if (param === true) {
+      api
+        .get(`/users/${idUser}`)
+        .then((response) => {
+          console.log(response, "get da api");
+          setPessoa(response.data);
+        })
+        .catch((err) => {
+          console.error("ops! deu errado na atualização " + err);
+        });
+    }
+  }
 
   function SimpleMediaQuery() {
     const matches = useMediaQuery("(min-width:600px)");
@@ -52,10 +65,10 @@ function Usuario({ dados, setUser }) {
         <Grid container display="flex" width="90%">
           <Content direction={SimpleMediaQuery().direction}>
             <Grid item xs={SimpleMediaQuery().size}>
-              <Tech dados={pessoa} token={meuToken} setUser={setUser} />
+              <Tech dados={pessoa} token={meuToken} loadInfos={loadInfos} />
             </Grid>
             <Grid item xs={SimpleMediaQuery().size}>
-              <Work dados={pessoa} token={meuToken} setUser={setUser} />
+              <Work dados={pessoa} token={meuToken} loadInfos={loadInfos} />
             </Grid>
             <Grid item xs={SimpleMediaQuery().user}>
               <User dados={pessoa} />

@@ -10,7 +10,10 @@ import { Toaster } from "react-hot-toast";
 
 function App() {
   const [user, setUser] = useState([]);
-  console.log(user, "usuario");
+  const [dataLogin, setDataLogin] = useState({
+    email: "",
+    password: "",
+  });
 
   return (
     <>
@@ -18,11 +21,11 @@ function App() {
       <Toaster position="top-center" reverseOrder={false} />
       <Switch>
         <Route exact path="/">
-          <Login setUser={setUser} />
+          <Login setUser={setUser} setDataLogin={setDataLogin} />
         </Route>
 
         <Route exact path="/usuario">
-          <Usuario dados={user} setUser={setUser} />
+          <Usuario dados={user} setUser={setUser} dataLogin={dataLogin} />
         </Route>
 
         <Route exact path="/cadastro">

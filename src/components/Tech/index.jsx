@@ -15,9 +15,11 @@ import ModelTech from "../Modals/Cadtech";
 // style
 import "./styles.css";
 
-function Tech({ dados, token, setUser }) {
+function Tech({ dados, token, setUser, loadInfos }) {
   const tecnologias = dados.techs;
   const [tec, setTech] = useState(tecnologias);
+  console.log(tecnologias);
+  console.log(tec);
 
   //style Model
   const style = {
@@ -68,7 +70,6 @@ function Tech({ dados, token, setUser }) {
   const [novo, setNovo] = useState({});
 
   function Change(param) {
-    console.log(param, "da tech");
     setNovo(param);
     setTroca(true);
   }
@@ -90,8 +91,7 @@ function Tech({ dados, token, setUser }) {
       )
       .then((response) => {
         console.log(response.data, "api post cadastro da tech deu certo");
-        setTech([...tec, response.data]);
-        console.log(tec, "nova tech renderizada");
+        loadInfos(true);
       })
       .catch((err) => {
         console.error("ops! deu errado cadastro de Techs" + err);
@@ -107,13 +107,16 @@ function Tech({ dados, token, setUser }) {
           troca={troca}
           setTroca={setTroca}
           token={token}
+          tec={tec}
+          setTech={setTech}
+          loadInfos={loadInfos}
         />
         <button id="addTech" onClick={() => setModal(true)}>
           +
         </button>
         {/**aqui chamei o meu MUI model */}
       </div>
-      {tec.map((element) => (
+      {dados.techs.map((element) => (
         <Card
           click={() => Change(element)}
           key={element.id}

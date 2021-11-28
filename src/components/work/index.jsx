@@ -14,11 +14,9 @@ import ModelWork from "../Modals/Cadwork";
 //styles
 import "./styles.css";
 
-function Work({ dados, token, setUser }) {
+function Work({ dados, token, loadInfos }) {
   const jobs = dados.works;
-  console.log(jobs, "dados recebidos do work");
   const [works, setWorks] = useState(jobs);
-  console.log(jobs, "state do work");
 
   const addWork = (data) => {
     //vai mudar endpoint: /work
@@ -40,6 +38,7 @@ function Work({ dados, token, setUser }) {
         console.log(response.data, "api post cadastro da work deu certo");
         setWorks([...works, response.data]);
         console.log(works, "nova work renderizada");
+        loadInfos(true);
       })
       .catch((err) => {
         console.error("ops! deu errado cadastro de Works" + err);
@@ -109,12 +108,13 @@ function Work({ dados, token, setUser }) {
           troca={troca}
           setTroca={setTroca}
           token={token}
+          loadInfos={loadInfos}
         />
         <button id="addWork" onClick={() => setModal(true)}>
           +
         </button>
       </div>
-      {works.map((element) => (
+      {dados.works.map((element) => (
         <Card
           click={() => Change(element)}
           key={element.id}

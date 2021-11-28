@@ -1,4 +1,6 @@
 .tech-cards {
+  display: flex;
+  flex-direction: row;
   border: solid 2px white;
   margin: 2px;
   width: 80%;
@@ -8,6 +10,8 @@
   border-right: 4px solid green;
 }
 .works-cards {
+  display: flex;
+  flex-direction: row;
   border: solid 2px white;
   margin: 2px;
 }
