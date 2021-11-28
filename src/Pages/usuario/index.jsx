@@ -3,6 +3,7 @@ import * as React from "react";
 import { Children, useState } from "react";
 import { Link } from "react-router-dom";
 // COMPONENTS
+import user_placeholder from "../../assets/images/imagem.png";
 import Tech from "../../components/Tech";
 import Work from "../../components/work";
 import User from "../../components/user";
@@ -48,7 +49,11 @@ function Usuario({ dados }) {
           <h2>
             Kenzie <span>Hub</span>
           </h2>
-          <div id="div-test"></div>
+          <div id="div-test">
+            <figure>
+              <img id="picture" alt={"one.name"} src={user_placeholder} />
+            </figure>
+          </div>
         </Head>
         <Grid container display="flex" width="90%">
           <Content direction={SimpleMediaQuery().direction}>

@@ -21,6 +21,7 @@ function Tech({ dados, token }) {
   console.log(tec, "state da tec");
 
   const addTech = (data) => {
+    //vai mudar endpoint: /techs
     api
       .post(
         "/users/techs",

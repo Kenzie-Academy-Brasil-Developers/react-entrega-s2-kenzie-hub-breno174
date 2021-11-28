@@ -9,11 +9,13 @@
 }
 
 #addWork {
-  background-color: #11995e;
+  background-color: #403caa;
   border-radius: 5px;
   padding: 4px;
   height: 30px;
-  /* font-size: 10px; */
+  padding: 6px 9px;
+  color: white;
+  font-weight: bold;
 }
 
 #works-title {

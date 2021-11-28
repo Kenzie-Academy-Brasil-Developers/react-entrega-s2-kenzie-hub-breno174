@@ -17,10 +17,10 @@ function Work({ dados, token }) {
   const jobs = dados.works;
   console.log(jobs, "dados recebidos do work");
   const [works, setWorks] = useState(jobs);
-  console.log(jobs, "state da tec");
+  console.log(jobs, "state do work");
 
   const addWork = (data) => {
-    //vai mudar endpoint URL
+    //vai mudar endpoint: /work
     api
       .post(
         "/users/works",
@@ -39,8 +39,6 @@ function Work({ dados, token }) {
         console.log(response.data, "api post cadastro da work deu certo");
         setWorks([...works, response.data]);
         console.log(works, "nova work renderizada");
-        // tecnologias = [...tecnologias, response.data];
-        // console.log(tecnologias, "fez o spreed");
       })
       .catch((err) => {
         console.error("ops! deu errado cadastro de Works" + err);
@@ -74,18 +72,6 @@ function Work({ dados, token }) {
     p: 4,
   };
 
-  //config model para aparecer ou não
-  const [modal, setModal] = useState(false);
-
-  //config titulo e descrições;
-  function haveWork(param) {
-    if (param === undefined) {
-      return "sem projetos";
-    } else {
-      return "tem work";
-    }
-  }
-
   //config titulo e descrições;
   const haveTitle = (param) => {
     if (param === undefined) {
@@ -102,13 +88,18 @@ function Work({ dados, token }) {
     }
   };
 
+  //config model para aparecer ou não
+  const [modal, setModal] = useState(false);
+
   return (
     <div id="works">
       <div id="works-title">
         <h2>Meus trabalhos</h2>
-        <button id="addWork">+</button>
+        <button id="addWork" onClick={() => setModal(true)}>
+          +
+        </button>
       </div>
-      {jobs.map((element) => (
+      {works.map((element) => (
         <Card
           key={element.id}
           className="works-cards"
@@ -133,7 +124,7 @@ function Work({ dados, token }) {
             <form onSubmit={handleSubmit(addWork)}>
               <TextField
                 {...register("title")}
-                helperText="Digite uma tecnologia"
+                helperText=" "
                 id="demo-helper-text-aligned"
                 label="Novo trabalho"
               />
@@ -145,7 +136,7 @@ function Work({ dados, token }) {
                   multiline
                   rows={4}
                   defaultValue="BIO"
-                  helperText="Comece uma descrição"
+                  helperText="Descreva sobre o objetivo do seu projeto"
                 />
               </div>
               <button type="submit">Enviar</button>

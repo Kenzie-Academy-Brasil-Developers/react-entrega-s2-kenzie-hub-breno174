@@ -29,14 +29,13 @@ export const Head = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 0px 14px;
+  padding: 0px 30px;
   margin: 20px 0px 10px;
   box-shadow: -5px 12px 28px 2px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
   #div-test {
     width: 50px;
     height: 50px;
-    background-color: red;
   }
 
   span {
