@@ -20,6 +20,74 @@ function Tech({ dados, token }) {
   const [tec, setTech] = useState(tecnologias);
   console.log(tec, "state da tec");
 
+  function Change(param) {
+    console.log(param);
+
+    return (
+      <Modal
+        open={true}
+        onClose={() => setModal(true)}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Cadastrar Tecnologia
+          </Typography>
+
+          <form onSubmit={handleSubmit(addTech)}>
+            <TextField
+              {...register("title")}
+              helperText="Digite uma tecnologia"
+              id="demo-helper-text-aligned"
+              label="Nova tecnologia"
+            />
+            <div>
+              <input
+                {...register("status")}
+                className="radio"
+                id="iniciante"
+                type="radio"
+                value="iniciante"
+                name="status"
+              />
+              <label className="label" htmlFor="iniciante">
+                iniciante
+              </label>
+              <input
+                {...register("status")}
+                className="radio"
+                id="intermediario"
+                type="radio"
+                value="intermediario"
+                name="status"
+              />
+              <label className="label" htmlFor="intermediario">
+                intermediario
+              </label>
+              <input
+                {...register("status")}
+                className="radio"
+                id="avançado"
+                type="radio"
+                value="avançado"
+                name="status"
+              />
+              <label className="label" htmlFor="avançado">
+                avançado
+              </label>
+            </div>
+            <button type="submit">Enviar</button>
+          </form>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            formulario de cadastro
+          </Typography>
+        </Box>
+      </Modal>
+    );
+  }
+
+  //funções para modificar as Techs;
   const addTech = (data) => {
     //vai mudar endpoint: /techs
     api
@@ -104,6 +172,7 @@ function Tech({ dados, token }) {
       </div>
       {tec.map((element) => (
         <Card
+          click={() => Change(element)}
           key={element.id}
           className="tech-cards"
           titulo={haveTitle(element)}

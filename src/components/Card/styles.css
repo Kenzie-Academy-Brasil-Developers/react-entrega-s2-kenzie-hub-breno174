@@ -1,8 +1,11 @@
 .tech-cards {
-  border: solid 2px black;
+  border: solid 2px white;
   margin: 2px;
   width: 80%;
   margin: auto;
+}
+.tech-cards:hover {
+  border-right: 4px solid green;
 }
 .works-cards {
   border: solid 2px blue;
