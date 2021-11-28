@@ -9,6 +9,8 @@ import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import api from "../../services/api";
+//material - UI
+import TextField from "@mui/material/TextField";
 //Styles
 import { Container, Content, AnimationContainer, Botao } from "./styles";
 import { toast } from "react-hot-toast";
@@ -17,8 +19,14 @@ function Login({ setUser }) {
   const history = useHistory();
 
   const formSchema = yup.object().shape({
-    email: yup.string().required("Campo obrigatorio"),
-    password: yup.string().required("Campo obrigatorio"),
+    email: yup
+      .string()
+      .required("Campo obrigatorio")
+      .email("email necessesário"),
+    password: yup
+      .string()
+      .required("Campo obrigatorio")
+      .min(6, "minimo de 6 digitos"),
   });
 
   const {
@@ -62,16 +70,22 @@ function Login({ setUser }) {
               Kenzie <span>Hub</span>
             </h1>
             <div id="box">
-              <Input
+              <TextField
+                error={errors.email ? true : false}
+                id="outlined-error"
                 label="Login"
-                placeholder="E-mail"
-                register={register}
-                name="email"
-                // {...register("email")}
-                required
+                helperText={errors.email ? "email invalido" : "  "}
+                {...register("email")}
               />
-              {/* <span>{errors.email?.messege}</span> */}
-              <Input
+              <TextField
+                error={errors.password ? true : false}
+                id="outlined-error"
+                label="Senha"
+                type="password"
+                helperText={errors.password ? "senha invalida" : "  "}
+                {...register("password")}
+              />
+              {/* <Input
                 required
                 register={register}
                 label="Senha"
@@ -79,7 +93,7 @@ function Login({ setUser }) {
                 name="password"
                 type="password"
                 // {...register("password")}
-              />
+              /> */}
               <Button type="submit">Logar</Button>
               <p>
                 Criar uma Página para mostrar suas{" "}
@@ -97,11 +111,3 @@ function Login({ setUser }) {
 }
 
 export default Login;
-
-/**
- * onClick={() => {
-                firstLock === true && secondtLock === true
-                  ? history.push("/usuario")
-                  : console.log("error");
-              }}
- */

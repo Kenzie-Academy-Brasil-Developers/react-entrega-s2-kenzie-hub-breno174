@@ -51,7 +51,9 @@ export const AnimationContainer = styled.div`
     box-sizing: border-box;
     padding: 20px;
     border-radius: 5px;
-    /* box-shadow: teal; */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
   }
   h1 {
     margin-bottom: 32px;

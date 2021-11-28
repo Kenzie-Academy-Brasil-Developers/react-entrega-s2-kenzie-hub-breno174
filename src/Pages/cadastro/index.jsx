@@ -13,6 +13,7 @@ import { toast } from "react-hot-toast";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
+import TextField from "@mui/material/TextField";
 
 import {
   Container,
@@ -50,7 +51,7 @@ function Cadastro({ dados }) {
     confsenha: yup
       .string()
       .min(6, "minimo de 6 digitos")
-      // .oneOf([yup.ref("password")], "senhas diferentes")
+      .oneOf([yup.ref("password")], "senhas diferentes")
       .required("Campo obrigatorio"),
   });
 
@@ -94,55 +95,103 @@ function Cadastro({ dados }) {
               Kenzie <span>Hub</span>
             </h1>
             <div id="box">
-              <Input
+              <TextField
+                error={errors.name ? true : false}
+                id="outlined-error"
                 label="Nome"
-                placeholder="Seu nome"
-                name="name"
-                register={register}
+                helperText={errors.name ? "nome invalido" : "  "}
+                {...register("name")}
               />
-              <Input
+
+              <TextField
+                error={errors.email ? true : false}
+                id="outlined-error"
                 label="Email"
-                placeholder="Seu melhor email"
-                name="email"
-                register={register}
+                helperText={errors.email ? "email invalido" : "  "}
+                {...register("email")}
               />
-              <Input
+
+              <TextField
+                error={errors.bio ? true : false}
+                id="outlined-error"
                 label="BIO"
-                placeholder="BIO"
-                name="bio"
-                register={register}
+                helperText={errors.bio ? "bio invalido" : "  "}
+                {...register("bio")}
               />
-              <Input
+
+              <TextField
+                error={errors.contact ? true : false}
+                id="outlined-error"
                 label="Contato"
-                placeholder="Contato"
-                type="text"
-                name="contact"
-                register={register}
+                helperText={errors.bio ? "contact invalido" : "  "}
+                {...register("contact")}
               />
-              {/**FALTA CRIAR A PARTE DO MODULO, QUE SERÁ POR SELECT,
-               * TEM NO HELP Q2 COMPARTILHARAM UM @MUI MUITO UTIL PARA ISSO */}
-              <Input
-                label="curso"
-                placeholder="Curso"
-                type="text"
-                name="course_module"
-                register={register}
-              />
-              {/**VOU CRIRA ESSE INPUT TEMPORARIO APENAS PARA TESTAR O GET CREATE */}
-              <Input
-                label="senha"
-                placeholder="Senha com 6 digitos"
+
+              <div id="modulos">
+                <input
+                  {...register("course_module")}
+                  className="radio"
+                  id="primeiro"
+                  type="radio"
+                  value="primeiro"
+                  name="course_module"
+                />
+                <label className="label" htmlFor="primeiro">
+                  primeiro
+                </label>
+                <input
+                  {...register("course_module")}
+                  className="radio"
+                  id="segundo"
+                  type="radio"
+                  value="segundo"
+                  name="course_module"
+                />
+                <label className="label" htmlFor="segundo">
+                  segundo
+                </label>
+                <input
+                  {...register("course_module")}
+                  className="radio"
+                  id="terceiro"
+                  type="radio"
+                  value="terceiro"
+                  name="course_module"
+                />
+                <label className="label" htmlFor="terceiro">
+                  terceiro
+                </label>
+                <input
+                  {...register("course_module")}
+                  className="radio"
+                  id="quarto"
+                  type="radio"
+                  value="quarto"
+                  name="course_module"
+                />
+                <label className="label" htmlFor="quarto">
+                  quarto
+                </label>
+              </div>
+
+              <TextField
+                error={errors.password ? true : false}
+                id="outlined-error"
+                label="Senha"
                 type="password"
-                name="password"
-                register={register}
+                helperText={errors.password ? "senha invalida" : "  "}
+                {...register("password")}
               />
-              <Input
-                label="Confirmação da senha"
-                placeholder="Confirmação de senha"
+
+              <TextField
+                error={errors.confsenha ? true : false}
+                id="outlined-error"
+                label="Confirmar senha"
                 type="password"
-                name="confsenha"
-                register={register}
+                helperText={errors.password ? "senha invalida" : "  "}
+                {...register("confsenha")}
               />
+
               <Button type="submit">Cadastrar</Button>
               <p>
                 Já tem uma conta? Faça seu <Link to="/">login</Link>
@@ -177,3 +226,13 @@ function Cadastro({ dados }) {
 }
 
 export default Cadastro;
+
+/**
+ * {/* <Input
+                label="Confirmação da senha"
+                placeholder="Confirmação de senha"
+                type="password"
+                name="confsenha"
+                register={register}
+              />
+ */

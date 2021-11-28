@@ -34,18 +34,11 @@
 }
 
 .label:hover {
-  background-color: brown;
+  background-color: rgba(122, 66, 252, 0.541);
 }
 
-.label::selection {
+.label:active,
+.label:visited,
+.label:focus {
   border: 2px solid green;
 }
-
-/* .radio {
-  display: none;
-  input:checked {
-    input + label {
-      border: 2px solid green;
-    }
-  }
-} */

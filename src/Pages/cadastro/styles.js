@@ -51,13 +51,34 @@ export const AnimationContainer = styled.div`
   #verde {
     background-color: green;
   }
+  #modulos {
+    margin: 14px 0px;
+  }
+  .label {
+    margin: 2px 5px;
+    padding: 6px;
+    background-color: rgba(78, 71, 255, 0.1);
+    color: black;
+    border-radius: 6px;
+  }
+
+  .label:hover {
+    background-color: rgba(122, 66, 252, 0.541);
+  }
+
+  .label:active,
+  .label:visited,
+  .label:focus {
+    border: 2px solid green;
+  }
 
   #box {
     border: solid 1px #ced4da;
     box-sizing: border-box;
     padding: 20px;
     border-radius: 5px;
-    /* box-shadow: teal; */
+    display: flex;
+    flex-direction: column;
   }
   form {
     margin: 20px 0;
