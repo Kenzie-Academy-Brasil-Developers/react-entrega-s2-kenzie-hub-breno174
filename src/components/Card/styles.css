@@ -22,3 +22,24 @@
   border: solid 2px red;
   margin: 2px;
 }
+
+.content {
+  margin-left: 5px;
+}
+
+.icons-works-cards {
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.icons-tech-cards {
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.icons-works-cards:hover {
+  background-color: rgba(112, 57, 214, 0.788);
+}
+.icons-tech-cards:hover {
+  background-color: rgba(165, 216, 64, 0.856);
+}

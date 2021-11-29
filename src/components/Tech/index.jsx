@@ -12,6 +12,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import api from "../../services/api";
 import ModelTech from "../Modals/Cadtech";
+import codesandbox from "../../assets/images/codesandbox.png";
 // style
 import "./styles.css";
 
@@ -123,7 +124,7 @@ function Tech({ dados, token, setUser, loadInfos }) {
           className="tech-cards"
           titulo={haveTitle(element)}
           descrição={haveStatus(element)}
-          //Icone={ViewInArIcon}
+          icone={codesandbox}
         />
       ))}
 

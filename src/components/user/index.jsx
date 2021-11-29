@@ -2,6 +2,8 @@ import Card from "../Card";
 import "./styles.css";
 import user_placeholder from "../../assets/images/imagem.png";
 import { useHistory } from "react-router-dom";
+import smartphone from "../../assets/images/smartphone.png";
+import mail from "../../assets/images/mail.png";
 
 function User({ dados }) {
   const one = dados;
@@ -24,16 +26,16 @@ function User({ dados }) {
       </div>
       <div id="dados-usuario">
         <Card
-          className="user-cards-contact"
+          className="user-cards-contact number"
           titulo={"Ligar agora"}
           descrição={one.contact}
-          //icone={one.icon}
+          icone={smartphone}
         />
         <Card
-          className="user-cards-contact"
+          className="user-cards-contact email"
           titulo={"Enviar um email"}
           descrição={one.email}
-          //icone={one.icon}
+          icone={mail}
         />
       </div>
       <button id="sair" onClick={() => history.push("/")}>

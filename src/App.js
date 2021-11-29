@@ -1,10 +1,9 @@
 import "./App.css";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Switch, Route } from "react-router-dom";
 import Cadastro from "./Pages/cadastro";
 import Usuario from "./Pages/usuario";
 import Login from "./Pages/home";
-import api from "./services/api";
 import GlobalStyle from "./styles/global";
 import { Toaster } from "react-hot-toast";
 

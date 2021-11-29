@@ -1,11 +1,9 @@
 // COMPONENTS
 import Button from "../../components/Button";
-import Input from "../../components/Input";
 //import { FiUser, FiLock } from "react-icons/fi";
 // HOOKS - yup, form, react, router
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useHistory } from "react-router-dom";
-import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import api from "../../services/api";

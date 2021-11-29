@@ -11,6 +11,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import api from "../../services/api";
 import ModelWork from "../Modals/Cadwork";
+import pullrequest from "../../assets/images/pullrequest.png";
 //styles
 import "./styles.css";
 
@@ -121,7 +122,7 @@ function Work({ dados, token, loadInfos }) {
           className="works-cards"
           titulo={haveTitle(element)}
           descrição={havedescription(element)}
-          //icone={element.icon}
+          icone={pullrequest}
         />
       ))}
       {/**BOX MODAL */}

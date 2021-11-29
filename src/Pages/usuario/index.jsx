@@ -1,7 +1,6 @@
 // HOOKS - react, router
 import * as React from "react";
-import { Children, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
 // COMPONENTS
 import user_placeholder from "../../assets/images/imagem.png";
 import Tech from "../../components/Tech";
@@ -9,7 +8,7 @@ import Work from "../../components/work";
 import User from "../../components/user";
 import api from "../../services/api";
 //Material - ui
-import { Grid, TextField, Button } from "@mui/material";
+import { Grid } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
 //styles
 import { Container, Content, Head } from "./styles";
@@ -34,7 +33,7 @@ function Usuario({ dados, setUser, dataLogin }) {
   }
 
   function SimpleMediaQuery() {
-    const matches = useMediaQuery("(min-width:600px)");
+    const matches = useMediaQuery("(min-width:650px)");
     let media = {
       direction: "row",
       size: 4.2,

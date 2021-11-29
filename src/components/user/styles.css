@@ -63,3 +63,19 @@
   background-color: #f5f5f5;
   border: 5px solid white;
 }
+.number img {
+  background-color: #403caa;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.number img::before {
+  background-color: #11995e;
+  color: #11995e;
+}
+
+.email img {
+  background-color: #11995e;
+  padding: 5px;
+  border-radius: 5px;
+}
