@@ -138,7 +138,7 @@ function ModelTech({ objeto, troca, setTroca, token, loadInfos }) {
           </div>
           <div id="botoes">
             <button className="alterar" type="submit">
-              Alterar status
+              Salvar alterações
             </button>
             <button
               className="alterar"

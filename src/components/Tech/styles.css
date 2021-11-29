@@ -22,7 +22,21 @@
   justify-content: space-between;
   margin: 8px 0px;
 }
-
+.submit {
+  background: var(--roxo);
+  color: white;
+  height: 45px;
+  border-radius: 8px;
+  border: 2px solid var(white);
+  font-family: "Roboto Mono", monospace;
+  font-weight: bold;
+  margin-top: 16px;
+  width: 100%;
+  transition: 0.5s;
+}
+.submit:hover {
+  border: 2px solid var(--black);
+}
 .radio {
   display: none;
 }

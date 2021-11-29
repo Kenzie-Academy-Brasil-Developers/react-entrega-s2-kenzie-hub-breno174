@@ -183,7 +183,9 @@ function Tech({ dados, token, setUser, loadInfos }) {
                   avançado
                 </label>
               </div>
-              <button type="submit">Enviar</button>
+              <button type="submit" className="submit">
+                Enviar
+              </button>
             </form>
           </Box>
         </Modal>

@@ -112,7 +112,7 @@ function ModelWork({ objeto, troca, setTroca, token, loadInfos }) {
           />
           <div id="botoes">
             <button className="alterar" type="submit">
-              Alterar descrição
+              Salvar alterações
             </button>
             <button
               className="alterar"

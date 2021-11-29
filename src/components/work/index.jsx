@@ -156,7 +156,9 @@ function Work({ dados, token, loadInfos }) {
                   helperText="Descreva sobre o objetivo do seu projeto"
                 />
               </div>
-              <button type="submit">Enviar</button>
+              <button className="submit" type="submit">
+                Enviar
+              </button>
             </form>
           </Box>
         </Modal>
