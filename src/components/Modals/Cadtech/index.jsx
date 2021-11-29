@@ -9,6 +9,8 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import api from "../../../services/api";
+//style
+import "./style.css";
 
 function ModelTech({ objeto, troca, setTroca, token, loadInfos }) {
   //formularios
@@ -83,8 +85,12 @@ function ModelTech({ objeto, troca, setTroca, token, loadInfos }) {
       aria-describedby="modal-modal-description"
     >
       <Box sx={style}>
-        <Typography id="modal-modal-title" variant="h6" component="h2">
-          Cadastrar Tecnologia
+        <Typography
+          id="modal-modal-title-modal-tech"
+          variant="h6"
+          component="h2"
+        >
+          Alterar tecnologias.
         </Typography>
 
         <form onSubmit={handleSubmit(changeTech)}>
@@ -139,7 +145,7 @@ function ModelTech({ objeto, troca, setTroca, token, loadInfos }) {
               id="exit"
               onClick={() => delTipe(objeto)}
             >
-              EXIT
+              Deletar
             </button>
           </div>
         </form>

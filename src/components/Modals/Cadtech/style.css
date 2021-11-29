@@ -1,6 +1,24 @@
 #botoes {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 15px 0px 9px;
 }
 .alterar {
+  color: white;
+  font-weight: bold;
+  background-color: var(--roxo);
+  padding: 14px 29px;
+  margin: 4px 3px;
+  border-radius: 6px;
+  border: none;
 }
 #exit {
+  background-color: rgba(221, 221, 221, 0.788);
+  color: gray;
+  border: none;
+}
+
+#modal-modal-title-modal-tech {
+  margin-bottom: 8px;
 }

@@ -31,6 +31,7 @@
   padding: 6px;
   background-color: rgba(78, 71, 255, 0.1);
   color: black;
+  border-radius: 5px;
 }
 
 .label:hover {
